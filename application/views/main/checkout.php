@@ -140,7 +140,7 @@ if(sizeof($key) > 0)
                                placeholder="Enter password to login">
                         <br>
                         <input type="button" class="btn btn-primary" value="Login" onclick="zn()">
-                        <input type="button" class="btn btn-primary" value="don't have a account?" onclick="hung()">
+                        <input type="button" class="btn btn-primary" value="Sign up and checkout" onclick="hung()">
                     </form>
                 </div>
             </div>

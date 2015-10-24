@@ -19,7 +19,6 @@
             </li>
         </ul>
     </div>
-
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">

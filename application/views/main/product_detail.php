@@ -72,8 +72,24 @@
                                                                 <img src="<? echo base_url().'product/'.$o['p_img'] ?>" width="268" height="249" alt="" />
                                                                 <h2><? echo $o['p_price'].' taka' ?></h2>
                                                                 <p><? echo $o['p_name'] ?></p>
-                                                                <a href="<? echo base_url().'user/product_detail/'.$o['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
-                                                                <a href="<? echo base_url().'user/add_to_cart/'.$o['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+
+                                                                <?
+
+                                                                    if($o['p_count'] > 0)
+                                                                    {
+                                                                        ?>
+                                                                        <a href="<? echo base_url().'user/product_detail/'.$o['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                                                                        <a href="<? echo base_url().'user/add_to_cart/'.$o['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                                        <?
+                                                                    }
+                                                                else{
+                                                                    ?>
+                                                                    <p>Product Out of Stock</p>
+                                                                        <?
+                                                                    }
+                                                                ?>
+
+
                                                             </div>
                                                         </div>
                                                     </div>

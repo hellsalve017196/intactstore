@@ -112,11 +112,11 @@ class product extends CI_Model
 
 
     /*product*/
-    public function add_product($p_n,$p_c,$p_b,$p_d,$p_p,$p_img)
+    public function add_product($p_n,$p_c,$p_b,$p_d,$p_p,$p_q,$p_img)
     {
         $flag = false;
 
-        if($this->db->query("INSERT INTO product VALUES(NULL,".$p_c.",".$p_b.",'".$p_n."','".$p_d."','".$p_img."','0','".$p_p."')"))
+        if($this->db->insert('product',array("c_id"=>$p_c,"b_id"=>$p_b,"p_name"=>$p_n,"p_des"=>$p_d,"p_img"=>$p_img,"p_price"=>$p_p,"p_rate"=>0,"p_count"=>$p_q)))
         {
             $flag = true;
         }
@@ -126,7 +126,7 @@ class product extends CI_Model
 
     public function product_list()
     {
-        $query = $this->db->query("SELECT p_id AS id,p_name AS name FROM product ORDER BY b_id DESC");
+        $query = $this->db->query("SELECT p_id AS id,p_count,p_name AS name FROM product ORDER BY b_id DESC");
         $data = array();
 
         if($query->num_rows() > 0)
@@ -167,7 +167,7 @@ class product extends CI_Model
     {
         $data = array();
 
-        $query = $this->db->query("SELECT product.p_id AS p_id,product.c_id AS c_id,product.b_id AS b_id,product.p_name AS p_name,product.p_des AS p_des,product.p_img AS p_img,product.p_price AS p_price,catagory.c_name AS c_name,brand.b_name AS b_name
+        $query = $this->db->query("SELECT product.p_id AS p_id,product.p_count AS p_count,product.c_id AS c_id,product.b_id AS b_id,product.p_name AS p_name,product.p_des AS p_des,product.p_img AS p_img,product.p_price AS p_price,catagory.c_name AS c_name,brand.b_name AS b_name
 FROM product JOIN catagory ON product.c_id = catagory.c_id JOIN brand ON product.b_id = brand.b_id AND product.p_id =".$id);
 
         if($query->num_rows() > 0)
@@ -178,11 +178,11 @@ FROM product JOIN catagory ON product.c_id = catagory.c_id JOIN brand ON product
         return $data;
     }
 
-    public function update_product($p_id,$p_n,$p_c,$p_b,$p_d,$p_p)
+    public function update_product($p_id,$p_n,$p_c,$p_b,$p_d,$p_p,$p_q)
     {
         $flag = false;
 
-        if($this->db->query("UPDATE product SET c_id = ".$p_c.",b_id = ".$p_b.",p_name = '".$p_n."',p_des = '".$p_d."',p_price = '".$p_p."' WHERE p_id = ".$p_id))
+        if($this->db->query("UPDATE product SET c_id = ".$p_c.",b_id = ".$p_b.",p_name = '".$p_n."',p_des = '".$p_d."',p_price = '".$p_p."',p_count = ".$p_q." WHERE p_id = ".$p_id))
         {
             $flag = true;
         }

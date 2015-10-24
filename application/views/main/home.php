@@ -14,15 +14,42 @@
                                                     <img src="<? echo base_url().'product/'.$p['p_img'] ?>" width="268" height="249" alt="">
                                                     <h2><? echo $p['p_price'].' taka' ?></h2>
                                                     <p><? echo $p['p_name'] ?></p>
-                                                    <a href="<? echo base_url().'user/add_to_cart/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a><a href="<? echo base_url().'user/product_detail/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+
+                                                    <?
+                                                    if($p['p_count'] > 0)
+                                                    {
+                                                        ?>
+                                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                                            to cart</a>
+                                                        <a href="<? echo base_url() . 'user/product_detail/' . $p['p_id'] ?>"
+                                                           class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                                                        <?
+                                                    }
+                                                    else{
+                                                        ?>
+                                                        <h1>Product Stock Out</h1>
+                                                        <?
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <div class="product-overlay">
                                                     <div class="overlay-content">
                                                         <h2><? echo $p['p_price'].' taka' ?></h2>
                                                         <p><? echo $p['p_name'] ?></p>
-                                                        <a href="<? echo base_url().'user/product_detail/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
 
-                                                        <a href="<? echo base_url().'user/add_to_cart/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                        <? if($p['p_count'] > 0) { ?>
+
+                                                            <a href="<? echo base_url().'user/product_detail/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+
+                                                            <a href="<? echo base_url().'user/add_to_cart/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+
+                                                        <? }
+                                                        else {
+                                                            ?>
+                                                            <h1>Product Stock Out</h1>
+                                                            <?
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <img class="new" src="<? echo base_url().'res/static/images/home/sale.png' ?>"/>
@@ -91,8 +118,22 @@
                                                                         <img src="<? echo base_url().'product/'.$p['p_img'] ?>" width="207" height="183" alt="">
                                                                         <h2><? echo $p['p_price'].' taka' ?></h2>
                                                                         <p><? echo $p['p_name'] ?></p>
-                                                                        <a href="<? echo base_url().'user/add_to_cart/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                                        <a href="<? echo base_url().'user/product_detail/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+
+                                                                        <?
+                                                                            if($p['p_count'] > 0)
+                                                                            {
+                                                                                ?>
+                                                                                <a href="<? echo base_url().'user/add_to_cart/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                                                <a href="<? echo base_url().'user/product_detail/'.$p['p_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Detail</a>
+                                                                                <?
+                                                                            }
+                                                                            else{
+                                                                                ?>
+                                                                                <p>Product Out of Stock</p>
+                                                                                <?
+                                                                            }
+                                                                        ?>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

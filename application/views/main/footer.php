@@ -16,9 +16,9 @@
                 <div class="col-sm-3">
                     <div class="single-widget" style="font-weight: bold">
                         <h2>Address</h2>
-                        <p>House-116,road-4</p>
-                        <p>mohammadpur,dhaka-1207</p>
-                        <p>phone:01677408411</p>
+                        <p>Shaymoli</p>
+                        <p>dhaka-1207</p>
+                        <p>phone: +8801670049472</p>
                     </div>
                 </div>
 
@@ -30,11 +30,29 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">Copyright © <? echo date('Y',time()); ?> Intact-store. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com/">Themeum</a></span></p>
             </div>
         </div>
     </div>
 
 </footer>
 <!--/Footer-->
+<script>
+    document.getElementById("search").addEventListener('keyup', function (e) {
+        key = e.which;
+
+        if(key == 13)
+        {
+            flag = e.target.value;
+
+
+            if (flag != '') {
+                window.location = "<? echo base_url() ?>user/product_list/" + flag + "/s_id#new";
+
+                e.target.value = "";
+            } else {
+                alert("field is empty");
+            }
+        }
+    },false)
+</script>
 	

@@ -41,7 +41,7 @@
 
             <div class="box-content">
                 <table class="table">
-                    <tr><td><? echo $topic; ?></td><td>Id</td><td>Decision</td></tr>
+                    <tr><td><? echo $topic; ?></td><td>Id</td><? if(isset($datas[0]['p_count'])) { ?><td>Quantity</td><? } ?><td>Decision</td></tr>
                     <?
                         if(sizeof($datas) > 0)
                         {
@@ -55,6 +55,13 @@
                                     <td>
                                         <? echo $d['id'] ?>
                                     </td>
+
+                                    <? if (isset($d['p_count'])): ?>
+                                        <td>
+                                            <? echo $d['p_count'] ?>
+                                        </td>
+                                    <? endif ?>
+
                                     <td>
                                         <? if($hudai) { ?>
                                             <input type="button" id="<? echo $d['id']+1 ?>" value="update" class="btn btn-success" onclick="zn(this)"/>

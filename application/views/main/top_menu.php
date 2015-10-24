@@ -5,8 +5,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="file:///home/zn/Desktop/Eshopper/index_files/index.html"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                            <li><a href="file:///home/zn/Desktop/Eshopper/index_files/index.html"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                            <li><a href="file:///home/zn/Desktop/Eshopper/index_files/index.html"><i class="fa fa-phone"></i> +8801670049472</a></li>
+                            <li><a href="file:///home/zn/Desktop/Eshopper/index_files/index.html"><i class="fa fa-envelope"></i>em5_11@hotmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search by entering">
+                        <input type="text" placeholder="Search by entering" id="search">
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@
             <div class="alert alert-info">
                 <? echo $title ?>
             </div>
-            <form class="form-horizontal" action="<? echo base_url().'admin/add_catagory_form' ?>" method="post">
+            <form class="form-horizontal" action="<? echo base_url().'admin/logging_in' ?>" method="post">
                 <h4>
 
                 </h4>

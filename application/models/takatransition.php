@@ -2,7 +2,7 @@
 class takatransition extends CI_Model
 {
     private $charge = 50;
-    private $mail = "abdullah017196@gmail.com";
+    private $mail = "em5_11@hotmail.com";
 
     public function taka_calculate($id,$amount)
     {
@@ -161,6 +161,8 @@ class takatransition extends CI_Model
                 $str = $str .'<tr><td>'.$data['p_id'].'</td><td>'.$data['p_name'].'</td><td>'.$data['p_price'].' taka</td><td>'.$data['p_amount'].'</td><td>'.$data['p_price']*$data['p_amount'].' taka</td></tr>';
                 $product = $p + $product;
 
+                $this->dec_stock_product($data['p_id']);
+
                 delete_cookie($data['p_id']);
             }
 
@@ -205,8 +207,49 @@ class takatransition extends CI_Model
         /*important lines for html mails*/
 
         $header = $header."From:"."Intact Store Receipt"." <"."Inactstoreadmin@intactstore.com".">"."\r\n";
-        $headers = $header.'Cc: '."intactstore.com".'' . "\r\n";
-        $headers = $header.'Bcc: '."intactstore.com".'' . "\r\n";
+        $header = $header.'Cc: '."intactstore.com".'' . "\r\n";
+        $header = $header.'Bcc: '."intactstore.com".'' . "\r\n";
+
+        mail($to,$sub,$msg,$header);
+    }
+
+    private function dec_stock_product($p_id)
+    {
+        $query = $this->db->get_where("product",array("p_id"=>$p_id));
+
+        if($query->num_rows() > 0)
+        {
+            $p_array = $query->row_array();
+            $current = $p_array['p_count'];
+            $current = $current - 1;
+
+            if($current < 0)
+            {
+                $current = 0;
+            }
+            else if($current <= 5)
+            {
+                $this->count_notification($p_id);
+            }
+
+            $this->db->update("product",array("p_count"=>$current),array("p_id"=>$p_id));
+        }
+    }
+
+    public function count_notification($id)
+    {
+        $to = $this->mail;
+        $sub = "Out of Stock Notification";
+        $msg = "Product Id : ".$id . " is currently less than 5 in the inventory,Stock up quickly";
+
+        /*important lines for html mails*/
+        $header = "MIME-Version:1.0"."\r\n";
+        $header = $header."Content-type:text/html;charset=utf-8"."\r\n";
+        /*important lines for html mails*/
+
+        $header = $header."From:"."The Server"." <"."Inactstoreadmin@intactstore.com".">"."\r\n";
+        $header = $header.'Cc: '."intactstore.com".'' . "\r\n";
+        $header = $header.'Bcc: '."intactstore.com".'' . "\r\n";
 
         mail($to,$sub,$msg,$header);
     }

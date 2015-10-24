@@ -15,6 +15,39 @@ class admin extends CI_Controller {
         $this->load->view("admin/admin_footer");
     }
 
+    /*logging in*/
+    public function logging_in()
+    {
+        $this->load->model('login','l');
+        $this->load->library("form_validation");
+
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('password','password','required');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $this->load->view("admin/admin_header");
+            $this->load->view("admin/admin_login",array("title"=>"Fill up the form fields properly"));
+            $this->load->view("admin/admin_footer");
+        }
+        else
+        {
+            $username = $this->input->post("username");
+            $password = $this->input->post("password");
+
+            if($this->l->login_process($username,$password))
+            {
+                redirect(base_url().'admin/orders','refresh');
+            }
+            else
+            {
+                $this->load->view("admin/admin_header");
+                $this->load->view("admin/admin_login",array("title"=>"Invalid Username or Password"));
+                $this->load->view("admin/admin_footer");
+            }
+        }
+    }
+
     /*catagory*/
 
     public function add_catagory_form()
@@ -189,6 +222,7 @@ class admin extends CI_Controller {
         $this->form_validation->set_rules('p_b', 'product brand', 'required');
         $this->form_validation->set_rules('p_d', 'product des', 'required');
         $this->form_validation->set_rules('p_p', 'product price', 'required');
+        $this->form_validation->set_rules('p_q', 'product quantity', 'required');
 
         $this->load->model("product");
         $brand = $this->product->brand_list();
@@ -207,6 +241,7 @@ class admin extends CI_Controller {
             $p_b = $this->input->post("p_b");
             $p_d = $this->input->post("p_d");
             $p_p = $this->input->post("p_p");
+            $p_q = $this->input->post("p_q");
 
 
             $config["upload_path"] = "./product/";
@@ -226,7 +261,7 @@ class admin extends CI_Controller {
                 $this->simpleimage->save("product/".$filename);
 
 
-                if($this->product->add_product($p_n,$p_c,$p_b,$p_d,$p_p,$filename))
+                if($this->product->add_product($p_n,$p_c,$p_b,$p_d,$p_p,$p_q,$filename))
                 {
                     $this->load->view("admin/admin_header");
                     $this->load->view("admin/admin_menu");
@@ -291,6 +326,7 @@ class admin extends CI_Controller {
         $this->form_validation->set_rules('p_b', 'product brand', 'required');
         $this->form_validation->set_rules('p_d', 'product des', 'required');
         $this->form_validation->set_rules('p_p', 'product price', 'required');
+        $this->form_validation->set_rules('p_q', 'product quantity', 'required');
 
         if($this->form_validation->run() == FALSE)
         {
@@ -303,9 +339,10 @@ class admin extends CI_Controller {
             $p_b = $this->input->post("p_b");
             $p_d = $this->input->post("p_d");
             $p_p = $this->input->post("p_p");
+            $p_q = $this->input->post("p_q");
 
             $this->load->model("product");
-            if($this->product->update_product($this->input->post('p_id'),$p_n,$p_c,$p_b,$p_d,$p_p))
+            if($this->product->update_product($this->input->post('p_id'),$p_n,$p_c,$p_b,$p_d,$p_p,$p_q))
             {
                 $this->update_product_form();
             }

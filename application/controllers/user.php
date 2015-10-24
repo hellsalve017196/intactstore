@@ -211,7 +211,8 @@ class user extends CI_Controller {
 
                 $this->cashmemo($filename);
             }
-        } else {
+        }
+        else {
             $data = $this->session->userdata("login");
 
             $name = $data['u_name'];
@@ -225,6 +226,8 @@ class user extends CI_Controller {
 
             $this->cashmemo($filename);
         }
+
+
     }
 
     public function cashmemo($filename = '')

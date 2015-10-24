@@ -8,13 +8,13 @@
 		{
 			$flag = false;
 			
-			$query = $this->db->query("SELECT u_id FROM users WHERE username = '".$username."' AND password = '".md5($password)."' ");
+			$query = $this->db->get_where("admins",array("a_user"=>$username,"a_password"=>$password));
 		
 			if($query->num_rows() == 1)
 			{
-				$data = $query->row();
+				//$data = $query->row();
 				
-				$this->id = $data->u_id;	
+				//$this->id = $data->u_id;
 					
 				$flag = true;
 			}

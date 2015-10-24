@@ -146,6 +146,11 @@
                         <input name="p_p" value="<? echo $row['p_price'] ?>" class="form-control" type="text">
                     </div>
 
+                    <div class="form-group">
+                        <label>update product quantity:</label>
+                        <input name="p_q" value="<? echo $row['p_count'] ?>" class="form-control" type="text">
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Update product</button>
                     <a href="<? echo base_url().'admin/delete_product/'.$row['p_id'] ?>" class="btn btn-danger">Delete product</a>
                 </form>

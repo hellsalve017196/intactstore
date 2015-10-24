@@ -103,6 +103,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Enter product Quantity:</label>
+                        <input name="p_q" class="form-control" type="text">
+                    </div>
+
+                    <div class="form-group">
                         <label>Select product image:(1024X768)</label>
                         <input class="form-control" type="file" name="userfile">
                     </div>
