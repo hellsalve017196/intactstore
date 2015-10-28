@@ -161,7 +161,7 @@ class takatransition extends CI_Model
                 $str = $str .'<tr><td>'.$data['p_id'].'</td><td>'.$data['p_name'].'</td><td>'.$data['p_price'].' taka</td><td>'.$data['p_amount'].'</td><td>'.$data['p_price']*$data['p_amount'].' taka</td></tr>';
                 $product = $p + $product;
 
-                $this->dec_stock_product($data['p_id']);
+                $this->dec_stock_product($data['p_id'],$data['p_amount']);
 
                 delete_cookie($data['p_id']);
             }
@@ -213,7 +213,7 @@ class takatransition extends CI_Model
         mail($to,$sub,$msg,$header);
     }
 
-    private function dec_stock_product($p_id)
+    private function dec_stock_product($p_id,$p_amount)
     {
         $query = $this->db->get_where("product",array("p_id"=>$p_id));
 
@@ -221,7 +221,7 @@ class takatransition extends CI_Model
         {
             $p_array = $query->row_array();
             $current = $p_array['p_count'];
-            $current = $current - 1;
+            $current = $current - $p_amount;
 
             if($current < 0)
             {

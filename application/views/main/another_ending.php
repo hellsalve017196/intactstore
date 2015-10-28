@@ -21,7 +21,13 @@
                 }
                 else
                 {
-                    window.location = "<? echo base_url().'user/add_to_cart/' ?>"+id+"/"+amount;
+                    var flag = '<? echo $single_product['p_count'] ?>';
+
+                    if (flag < amount) {
+                        alert("Currently there are " + flag + " products in the inventory,send us a mail or call for your demanded amount");
+                    } else {
+                        window.location = "<? echo base_url().'user/add_to_cart/' ?>"+id+"/"+amount;
+                    }
                 }
             }
         );

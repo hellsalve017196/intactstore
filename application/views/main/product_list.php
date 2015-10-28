@@ -28,7 +28,7 @@
                                     }
                                     else{
                                         ?>
-                                        <h1>Product Stock Out</h1>
+                                        <p>Product Stock Out</p>
                                         <?
                                     }
                                 ?>
@@ -48,7 +48,7 @@
                                     <? }
                                        else {
                                            ?>
-                                           <h1>Product Stock Out</h1>
+                                           <p>Product Stock Out</p>
                                            <?
                                        }
                                     ?>

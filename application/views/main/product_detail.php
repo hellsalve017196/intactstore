@@ -2,7 +2,6 @@
     <div class="container">
         <div class="row">
 
-
             <div class="col-sm-9 padding-right">
                 <?
                     if(sizeof($single_product) > 0)
@@ -20,6 +19,7 @@
                                     <p id="p_id" style="display: none"><? echo $single_product['p_id'] ?></p>
                                     <h2><? echo $single_product['p_name'] ?></h2>
                                     <p>product ID:<? echo $single_product['p_id'] ?></p>
+                                    <p>Currently in the Inventory: <? echo $single_product['p_count'] ?></p>
 								<span>
 									<span><? echo $single_product['p_price'].' taka'?></span>
 									<label>Quantity:</label>

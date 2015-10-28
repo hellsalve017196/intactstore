@@ -167,8 +167,9 @@ class product extends CI_Model
     {
         $data = array();
 
+
         $query = $this->db->query("SELECT product.p_id AS p_id,product.p_count AS p_count,product.c_id AS c_id,product.b_id AS b_id,product.p_name AS p_name,product.p_des AS p_des,product.p_img AS p_img,product.p_price AS p_price,catagory.c_name AS c_name,brand.b_name AS b_name
-FROM product JOIN catagory ON product.c_id = catagory.c_id JOIN brand ON product.b_id = brand.b_id AND product.p_id =".$id);
+FROM product JOIN catagory ON product.c_id = catagory.c_id JOIN brand ON product.b_id = brand.b_id AND product.p_id = ".$id);
 
         if($query->num_rows() > 0)
         {
