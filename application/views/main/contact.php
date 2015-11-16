@@ -37,10 +37,10 @@
                 <div class="contact-info">
                     <h2 class="title text-center">Contact Info</h2>
                     <address>
-                        <p>IntactStore</p>
-                        <p>Shaymoli</p>
-                        <p>dhaka-1207</p>
-                        <p>phone: +8801670049472</p>
+                        <p>KroyKorun.com</p>
+                        <p>Dhaka</p>
+                        <p>Bangladesh</p>
+                        <p>Mail: info@kroykorun.com</p>
                     </address>
                     <div class="social-networks">
                         <h2 class="title text-center">Social Networking</h2>

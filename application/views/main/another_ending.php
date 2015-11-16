@@ -1,4 +1,3 @@
-<script src="<? echo base_url()."res/static/js/jquery.js" ?>"></script>
 <script src="<? echo base_url()."res/static/js/bootstrap.min.js" ?>"></script>
 <script src="<? echo base_url()."res/static/js/jquery.scrollUp.min.js" ?>"></script>
 <script src="<? echo base_url()."res/static/js/price-range.js" ?>"></script>

@@ -1,7 +1,7 @@
 <?php
 class takatransition extends CI_Model
 {
-    private $charge = 50;
+    private $charge = 100;
     private $mail = "em5_11@hotmail.com";
 
     public function taka_calculate($id,$amount)
@@ -28,7 +28,7 @@ class takatransition extends CI_Model
         {
             if(($key = array_search($id,$data))!==false)
             {
-               $flag = false;
+                $flag = false;
             }
         }
 
@@ -117,7 +117,7 @@ class takatransition extends CI_Model
 	<head></head>
 	<body>
 	       <div align="center">
-			<h1>Intact Store</h1>
+			<h1>KroyKorun.com</h1>
 		</div>
 
 		<table align="center" border="1" cellpadding="5">
@@ -174,7 +174,7 @@ class takatransition extends CI_Model
 			</tr>
 			<tr>
 				<td colspan="4">Delivery Charge:</td>
-				<td colspan="1">50 taka</td>
+				<td colspan="1">'.$this->charge.' taka</td>
 			</tr>
 			<tr>
 				<td colspan="4">Total:</td>
@@ -190,15 +190,15 @@ class takatransition extends CI_Model
 
         delete_cookie("key");
 
-        $this->send_to_mail($str,$filename);
+        $this->send_to_mail($str,$filename,$email);
         return $filename;
     }
 
-    public function send_to_mail($str,$file)
+    public function send_to_mail($str,$file,$customer)
     {
         $str = $str.'<a href="'.base_url().'/orders/'.$file.'"><h1>Print</h1></a>';
-        $to = $this->mail;
-        $sub = "IntactStore Invoice ".date('d-m-Y h:i:s A');
+        $to = $this->mail.','.$customer;
+        $sub = "KroyKorun Invoice ".date('d-m-Y h:i:s A');
         $msg = $str;
 
         /*important lines for html mails*/
@@ -206,9 +206,9 @@ class takatransition extends CI_Model
         $header = $header."Content-type:text/html;charset=utf-8"."\r\n";
         /*important lines for html mails*/
 
-        $header = $header."From:"."Intact Store Receipt"." <"."Inactstoreadmin@intactstore.com".">"."\r\n";
-        $header = $header.'Cc: '."intactstore.com".'' . "\r\n";
-        $header = $header.'Bcc: '."intactstore.com".'' . "\r\n";
+        $header = $header."From:"."kroykorun.com Receipt"." <"."kroykorun@info.com".">"."\r\n";
+        $header = $header.'Cc: '."kroykorun.com".'' . "\r\n";
+        $header = $header.'Bcc: '."kroykorun.com".'' . "\r\n";
 
         mail($to,$sub,$msg,$header);
     }
@@ -247,9 +247,9 @@ class takatransition extends CI_Model
         $header = $header."Content-type:text/html;charset=utf-8"."\r\n";
         /*important lines for html mails*/
 
-        $header = $header."From:"."The Server"." <"."Inactstoreadmin@intactstore.com".">"."\r\n";
-        $header = $header.'Cc: '."intactstore.com".'' . "\r\n";
-        $header = $header.'Bcc: '."intactstore.com".'' . "\r\n";
+        $header = $header."From:"."The Server"." <"."kroykorun.com".">"."\r\n";
+        $header = $header.'Cc: '."kroykorun.com".'' . "\r\n";
+        $header = $header.'Bcc: '."kroykorun.com".'' . "\r\n";
 
         mail($to,$sub,$msg,$header);
     }
@@ -270,5 +270,54 @@ class takatransition extends CI_Model
 
         return $flag;
     }
+
+    public function update_profile($data,$u_id)
+    {
+        $flag = false;
+
+        if($this->db->update('user',$data,array('u_id'=>$u_id)))
+        {
+            $this->session->unset_userdata("login");
+
+            $data['u_id'] = $u_id;
+
+            $this->session->set_userdata('login',$data);
+            $flag = true;
+        }
+
+        return $flag;
+    }
+
+    public function user_email_exist($email)
+    {
+        $flag = false;
+
+        $query = $this->db->get_where('user',$email);
+
+        if($query->num_rows() > 0)
+        {
+            $data = $query->row_array();
+
+            $to = $email['u_email'];
+            $sub = "Password Notification";
+            $msg = "Your password is : ".$data['u_password'];
+
+            /*important lines for html mails*/
+            $header = "MIME-Version:1.0"."\r\n";
+            $header = $header."Content-type:text/html;charset=utf-8"."\r\n";
+            /*important lines for html mails*/
+
+            $header = $header."From:"."The Server"." <"."kroykorun.com".">"."\r\n";
+            $header = $header.'Cc: '."kroykorun.com".'' . "\r\n";
+            $header = $header.'Bcc: '."kroykorun.com".'' . "\r\n";
+
+            mail($to,$sub,$msg,$header);
+
+            $flag = true;
+        }
+
+        return $flag;
+    }
+
 }
 ?>

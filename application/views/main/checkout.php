@@ -1,23 +1,26 @@
 <?
 if(sizeof($key) > 0)
 {
-    ?>
+?>
 <section id="cart_items">
 <div class="container">
     <div class="review-payment">
-        <h2>Review & Payment</h2>
+        <h2><b>Review & Payment</b></h2>
     </div>
     <div class="table-responsive cart_info">
 
         <table class="table table-condensed">
             <thead>
             <tr class="cart_menu">
-                <td class="image">Item</td>
-                <td class="description"></td>
-                <td class="price">Price</td>
-                <td class="quantity">Quantity</td>
-                <td class="total">Total</td>
-                <td></td>
+                    <td class="image">Item</td>
+                    <td class="description">Info</td>
+                    <td></td>
+                    <td class="price">Price</td>
+                    <td></td>
+                    <td class="quantity">Quantity</td>
+                    <td></td>
+                    <td class="total">Total</td>
+                    <td></td>
             </tr>
             </thead>
             <tbody>
@@ -33,11 +36,11 @@ if(sizeof($key) > 0)
                 ?>
                 <tr>
                     <td class="cart_product">
-                        <a href=""><img src="<? echo base_url().'product/'.$data['p_img'] ?>" width="100" height="100" alt=""></a>
+                        <a href=""><img src="<? echo base_url().'product/'.$data['p_img'] ?>" width="200" height="200" alt="   "></a>
                     </td>
                     <td class="cart_description">
                         <h4><a href=""><? echo $data['p_name'] ?></a></h4>
-                        <p>Web ID: <? echo $data['p_id'] ?></p>
+                        <p>Product ID: <? echo $data['p_id'] ?></p>
                     </td>
                     <td class="cart_price">
                         <p><? echo $data['p_price'].' taka' ?></p>
@@ -63,20 +66,20 @@ if(sizeof($key) > 0)
             ?>
 
                 <tr>
-                    <td colspan="3">&nbsp;</td>
-                    <td colspan="2">
+                    <td colspan="5">&nbsp;</td>
+                    <td colspan="4">
                         <table class="table table-condensed total-result">
                             <tr>
-                                <td>Cart Sub Total</td>
-                                <td><? echo $product.' taka' ?></td>
+                                <td><h4>Cart Sub Total</h4></td>
+                                <td><h4><? echo $product.' taka' ?></h4></td>
                             </tr>
                             <tr class="shipping-cost">
-                                <td>Delivery Cost</td>
-                                <td><? echo $cost.' taka' ?></td>
+                                <td><h4>Delivery Cost</h4></td>
+                                <td><h4><? echo $cost.' taka' ?></h4></td>
                             </tr>
                             <tr>
-                                <td>Total</td>
-                                <td><span><? echo ($product+$cost).' taka' ?></span></td>
+                                <td><h3>Total</h3></td>
+                                <td><h3><b><? echo ($product+$cost).' taka' ?></b></h3></td>
                             </tr>
                         </table>
                     </td>
@@ -92,19 +95,19 @@ if(sizeof($key) > 0)
         <div class="row" id="first" style="display: none">
             <div class="col-sm-6">
                 <div class="shopper-info">
-                    <p>Sign up and checkout</p>
+                    <p>Sign Up and Checkout</p>
 
                     <form method="post" action="<? echo base_url() . 'user/order' ?>">
-                        <p>name:</p>
+                        <p>Full Name:</p>
                         <input required="required" type="text" name="name" placeholder="Enter name">
 
-                        <p>mobile number</p>
+                        <p>Mobile Number:</p>
                         <input required="required" type="text" name="number" placeholder="Enter mobile number">
 
-                        <p>Email address</p>
+                        <p>Email Address:</p>
                         <input required="required" type="email" name="email" placeholder="Enter email address">
 
-                        <p>Password</p>
+                        <p>Password:</p>
                         <input required="required" type="password" name="password"
                                placeholder="Enter password to login">
                 </div>
@@ -193,14 +196,12 @@ if(sizeof($key) > 0)
                     method: 'POST',
                     data: {login: JSON.stringify({u_email: email, u_password: pass})},
                     success: function (data) {
-
-                        if (data) {
+                        if (data == '1') {
                             location.reload(true);
                         }
                         else{
                             $("#out").html("Invalid Username or Password");
                         }
-
                     }
                 });
             }

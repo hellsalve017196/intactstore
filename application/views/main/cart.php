@@ -10,9 +10,12 @@ if(sizeof($key) > 0)
                 <thead>
                 <tr class="cart_menu">
                     <td class="image">Item</td>
-                    <td class="description"></td>
+                    <td class="description">Info</td>
+                    <td></td>
                     <td class="price">Price</td>
+                    <td></td>
                     <td class="quantity">Quantity</td>
+                    <td></td>
                     <td class="total">Total</td>
                     <td></td>
                 </tr>
@@ -29,11 +32,11 @@ if(sizeof($key) > 0)
                             ?>
                             <tr>
                                 <td class="cart_product">
-                                    <a href=""><img src="<? echo base_url().'product/'.$data['p_img'] ?>" width="100" height="100" alt=""></a>
+                                    <a href=""><img src="<? echo base_url().'product/'.$data['p_img'] ?>" width="300" height="300" alt=""></a>
                                 </td>
                                 <td class="cart_description">
                                     <h4><a href=""><? echo $data['p_name'] ?></a></h4>
-                                    <p>Web ID: <? echo $data['p_id'] ?></p>
+                                    <p>Product ID: <? echo $data['p_id'] ?></p>
                                 </td>
                                 <td class="cart_price">
                                     <p><? echo $data['p_price'].' taka' ?></p>
@@ -77,7 +80,7 @@ if(sizeof($key) > 0)
                         <li>Total: <span><? echo $product+$delivery_cost.' taka' ?></span></li>
                     </ul>
 
-                    <a class="btn btn-default check_out" href="<? echo base_url().'user/checkout/#main' ?>">Check Out</a>
+                    <a class="btn btn-default check_out" href="<? echo base_url().'user/checkout/#main' ?>">Check Out and Review</a>
                 </div>
             </div>
         </div>

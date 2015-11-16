@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Intact Store</title>
+    <title>KroyKorun.com</title>
 
     <link href="<? echo base_url()."res/static/css/bootstrap.min.css" ?>" rel="stylesheet">
     <link href="<? echo base_url()."res/static/css/font-awesome.min.css"?>" rel="stylesheet">
@@ -19,6 +19,7 @@
     <script src="<? echo base_url().'res/static/js/html5shiv.js'?>"></script>
     <script src="<? echo base_url().'res/static/js/respond.min.js'?>"></script>
     <![endif]-->
+    <script src="<? echo base_url()."res/static/js/jquery.js" ?>"></script>
 
     <link rel="shortcut icon" href="<? echo base_url().'res/static/images/ico/favicon.ico' ?>">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<? echo base_url().'res/static/images/ico/apple-touch-icon-144-precomposed.png' ?>">

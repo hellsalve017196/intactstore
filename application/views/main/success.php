@@ -10,12 +10,12 @@
         </div>
         -->
         <?
-            $phone = '+8801670049472';
+            $phone = 'info@kroykorun.com';
         ?>
         <div class="row">
             <div class="col-sm-12">
                 <div class="contact-form">
-                    <h2 class="title text-center">Order successfully taken,for further information call:"<? echo $phone; ?>".<br>click the link :<a target="_blank" href="<? echo base_url().'orders/'.$filename ?>">Cash Receipt</a></h2>
+                    <h2 class="title text-center">Order successfully taken, Please save the cash receipt for your own safety, for further information >mail : "<? echo $phone; ?>".<br>click the link :<a target="_blank" href="<? echo base_url().'orders/'.$filename ?>"> Cash Receipt</a></h2>
                 </div>
             </div>
         </div>

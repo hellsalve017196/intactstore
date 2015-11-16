@@ -2,7 +2,7 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class user extends CI_Controller {
-    private $delivery_cost = 50;
+    private $delivery_cost = 100;
 
     public function __construct(){
         parent::__construct();
@@ -74,6 +74,7 @@ class user extends CI_Controller {
         $this->load->view("main/footer");
         $this->load->view("main/ending");
     }
+
 
     public function product_detail($id)
     {
@@ -279,6 +280,17 @@ class user extends CI_Controller {
     }
 
 
+    public function user_login_view()
+    {
+        $this->load->view("main/head");
+        $this->load->view("main/top_menu");
+
+
+        $this->load->view("main/user_login");
+        $this->load->view("main/footer");
+        $this->load->view("main/ending");
+    }
+
     public function user_login()
     {
         $this->load->model('takatransition','t');
@@ -300,6 +312,51 @@ class user extends CI_Controller {
         $this->session->unset_userdata("login");
         $this->index();
         redirect(base_url(),'refresh');
+    }
+
+    public function edit_profile_view()
+    {
+        $this->load->view("main/head");
+        $this->load->view("main/top_menu");
+
+
+        $this->load->view("main/profile",array("login"=>$this->session->userdata('login')));
+        $this->load->view("main/footer");
+        $this->load->view("main/ending");
+    }
+
+    public function edit_profile()
+    {
+        $this->load->model('takatransition','t');
+
+        $data = json_decode($this->input->post('login'),true);
+        $user = $this->session->userdata('login');
+
+
+        if($this->t->update_profile($data,$user['u_id']))
+        {
+            echo 1;
+        }
+        else
+        {
+            echo 0;
+        }
+    }
+
+    public function password_retrive()
+    {
+        $this->load->model('takatransition','t');
+
+        $data = json_decode($this->input->post('login'),true);
+
+        if($this->t->user_email_exist($data))
+        {
+            echo 1;
+        }
+        else
+        {
+            echo 0;
+        }
     }
 }
 

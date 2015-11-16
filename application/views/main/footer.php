@@ -8,17 +8,20 @@
                 <div class="col-sm-2">
                     <div class="single-widget">
                         <h2>Policies</h2>
-                        <p><strong>(1).Cash on Delivery in Dhaka</strong></p>
-                        <p><strong>(2).Delivery Cost 50 taka in Dhaka</strong></p>
+                        <p><strong>**SIGN UP MUST FOR PURCHASE**</strong></p>
+                        <p><strong>(1)Cash on Delivery in Dhaka</strong></p>
+                        <p><strong>(2)Delivery Cost 100 taka in Dhaka</strong></p>
+                        <p><strong>(3)Call for Bkash </strong></p>
+                        <p><strong>(4)Visa/Mastercard/AmericanExpress Coming Soon! </strong></p>
                     </div>
                 </div>
 
                 <div class="col-sm-3">
                     <div class="single-widget" style="font-weight: bold">
                         <h2>Address</h2>
-                        <p>Shaymoli</p>
-                        <p>dhaka-1207</p>
-                        <p>phone: +8801670049472</p>
+                        <p>Dhaka</p>
+                        <p>Bangladesh</p>
+                        <p>Contact: info@kroykorun.com</p>
                     </div>
                 </div>
 
@@ -29,7 +32,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">Copyright © <? echo date('Y',time()); ?> Intact-store. All rights reserved.</p>
+                <p class="pull-left">Copyright © <? echo date('Y',time()); ?> KroyKorun.com. All rights reserved.</p>
             </div>
         </div>
     </div>

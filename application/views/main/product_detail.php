@@ -84,7 +84,7 @@
                                                                     }
                                                                 else{
                                                                     ?>
-                                                                    <p>Product Out of Stock</p>
+                                                                    <h4>Product Out of Stock</h4>
                                                                         <?
                                                                     }
                                                                 ?>
