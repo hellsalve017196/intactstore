@@ -1,2 +1,2 @@
 # intactstore
-Ecommerce build with IntactStore
+Ecommerce build with CodeIgniter
